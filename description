@@ -1,0 +1,13 @@
+to run the project 
+ 
+php artisan migrate
+
+php artisan db:seed
+
+
+login as normal user with :email(user@user.com) password 123456
+
+login as admin click to admin link  with :email(admin@admin.com) password 123456
+
+
+

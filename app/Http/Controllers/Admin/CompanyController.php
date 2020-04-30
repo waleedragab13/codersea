@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Traits\UploadAble;
 use App\Models\Company;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendMail;
 use Illuminate\Support\Facades\Validator;
 
 class CompanyController extends Controller
@@ -62,8 +63,8 @@ class CompanyController extends Controller
             $data['logo'] = $image;
         }
         // dd($edata);
-        
         Company::create($data);
+        Mail::to($data['email'])->send(new SendMail());
         session()->push('m', 'success');
         session()->push('m', 'successefully saved data');
         return redirect('admin/companies');
